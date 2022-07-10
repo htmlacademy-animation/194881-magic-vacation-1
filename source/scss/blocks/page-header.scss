@@ -27,7 +27,6 @@
 }
 
 .page-header__logo {
-  @include hover;
   position: relative;
   flex: none;
   top: -0.5rem;
@@ -35,6 +34,18 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  transform: translateX(-20px);
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: .7s;
+  transition-delay: .3s;
+  transition-timing-function: cubic-bezier(.2,.33,0,.9);
+
+  .onload & {
+    @include hover;
+    transform: translateX(0);
+    opacity: 1;
+  }
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -130,6 +141,12 @@
 .page-header__nav {
   display: flex;
   align-items: center;
+  opacity: 0;
+
+  .onload & {
+    opacity: 1;
+    transition: opacity .7s cubic-bezier(.2,.33,0,.9) .5s;
+  }
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -289,7 +306,21 @@
 
     &.active {
       &::after {
-        width: 100%;
+        width: 0;
+        transition: width .7s cubic-bezier(.2,.33,0,.9) .5s;
+      }
+
+      &:hover,
+      &:focus {
+        &::before {
+          width: 0;
+        }
+      }
+
+      .onload & {
+        &::after {
+          width: 100%;
+        }
       }
     }
 
