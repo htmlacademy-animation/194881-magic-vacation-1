@@ -1,0 +1,36 @@
+@keyframes showtext {
+  0% {
+    transform: translate3d(20px,0,0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0,0,0);
+    opacity: 1;
+  }
+}
+
+@keyframes showpag {
+  0% {
+    color: $c-purple;
+    transform: scale3d(0,0,0);
+  }
+  75% {
+    color: $c-purple;
+  }
+  100% {
+    color: $c-light;
+    transform: scale3d(1,1,1);
+  }
+}
+
+@keyframes a-grow {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes a-appearance {
+  to {
+    opacity: 1;
+  }
+}
